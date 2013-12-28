@@ -1,0 +1,15 @@
+{
+  "name": "broccoli-static-compiler",
+  "description": "Broccoli compiler to copy static files",
+  "version": "0.0.1",
+  "author": "Jo Liss <joliss42@gmail.com>",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joliss/broccoli-static-compiler"
+  },
+  "dependencies": {
+    "mkdirp": "~0.3.5"
+  }
+}
