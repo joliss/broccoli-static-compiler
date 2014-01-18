@@ -10,7 +10,7 @@ compilerCollection.addCompiler(new StaticCompiler({
   srcDir: '/todomvc',
   files: ['**/*.png', '**/*.jpg'],
   destDir: '/assets'
-}))
+}));
 ```
 
 This would copy `/todomvc/icons/check-mark.png` to

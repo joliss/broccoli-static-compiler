@@ -8,7 +8,7 @@ module.exports = function (broccoli) {
     this.options = options
   }
 
-  StaticCompiler.prototype.compile = function (srcDir, destDir, callback) {
+  StaticCompiler.prototype.compile = function (srcDir, destDir) {
     if (this.options.files == null) {
       broccoli.helpers.linkRecursivelySync(
         path.join(srcDir, this.options.srcDir),
@@ -24,7 +24,7 @@ module.exports = function (broccoli) {
           path.join(destDir, this.options.destDir, files[i]))
       }
     }
-    callback()
+    // This method is synchronous, so we don't need to return a promise here
   }
 
   return StaticCompiler
