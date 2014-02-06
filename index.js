@@ -2,13 +2,14 @@ module.exports = function (broccoli) {
   var path = require('path')
   var mkdirp = require('mkdirp')
 
-  StaticCompiler.prototype = Object.create(broccoli.Compiler.prototype)
+  StaticCompiler.prototype = Object.create(broccoli.Transformer.prototype)
   StaticCompiler.prototype.constructor = StaticCompiler
-  function StaticCompiler (options) {
+  function StaticCompiler (inputTree, options) {
+    this.inputTree = inputTree
     this.options = options
   }
 
-  StaticCompiler.prototype.compile = function (srcDir, destDir) {
+  StaticCompiler.prototype.transform = function (srcDir, destDir) {
     if (this.options.files == null) {
       broccoli.helpers.linkRecursivelySync(
         path.join(srcDir, this.options.srcDir),
@@ -27,5 +28,7 @@ module.exports = function (broccoli) {
     // This method is synchronous, so we don't need to return a promise here
   }
 
-  return StaticCompiler
+  return function (inputTree, options) {
+    return new StaticCompiler(inputTree, options)
+  }
 }

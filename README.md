@@ -1,23 +1,20 @@
 # broccoli-static-compiler
 
-The `StaticCompiler` copies static files.
+Pick files out of a tree, optionally moving them.
 
 ## Usage Example
 
 ```js
-var StaticCompiler = require('broccoli-static-compiler')(broccoli);
-compilerCollection.addCompiler(new StaticCompiler({
+var pickFiles = require('broccoli-static-compiler')(broccoli);
+var imagesTree = pickFiles(sourceTree, {
   srcDir: '/todomvc',
   files: ['**/*.png', '**/*.jpg'],
   destDir: '/assets'
-}));
+})
 ```
 
 This would copy `/todomvc/icons/check-mark.png` to
 `/assets/icons/check-mark.png`.
-
-To copy files from more than one `srcDir`, register multiple instances of this
-compiler.
 
 ## Options
 
