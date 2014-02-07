@@ -10,6 +10,7 @@
     "url": "https://github.com/joliss/broccoli-static-compiler"
   },
   "dependencies": {
-    "mkdirp": "~0.3.5"
+    "mkdirp": "~0.3.5",
+    "broccoli": "0.0.10"
   }
 }

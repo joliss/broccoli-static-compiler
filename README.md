@@ -5,7 +5,7 @@ Pick files out of a tree, optionally moving them.
 ## Usage Example
 
 ```js
-var pickFiles = require('broccoli-static-compiler')(broccoli);
+var pickFiles = require('broccoli-static-compiler');
 var imagesTree = pickFiles(sourceTree, {
   srcDir: '/todomvc',
   files: ['**/*.png', '**/*.jpg'],
