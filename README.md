@@ -2,6 +2,12 @@
 
 Pick files out of a tree, optionally moving them.
 
+## Installation
+
+```bash
+npm install --save broccoli-static-compiler
+```
+
 ## Usage Example
 
 ```js
