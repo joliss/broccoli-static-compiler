@@ -1,5 +1,7 @@
 # master
 
+# 0.0.5
+
 * Use `broccoli-transform` instead of `broccoli.Transformer`
 
 # 0.0.4
