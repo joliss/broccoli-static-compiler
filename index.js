@@ -1,9 +1,10 @@
 var path = require('path')
 var mkdirp = require('mkdirp')
 var broccoli = require('broccoli')
+var Transform = require('broccoli-transform')
 
 module.exports = StaticCompiler
-StaticCompiler.prototype = Object.create(broccoli.Transformer.prototype)
+StaticCompiler.prototype = Object.create(Transform.prototype)
 StaticCompiler.prototype.constructor = StaticCompiler
 function StaticCompiler (inputTree, options) {
   if (!(this instanceof StaticCompiler)) return new StaticCompiler(inputTree, options)
