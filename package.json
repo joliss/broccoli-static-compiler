@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "mkdirp": "~0.3.5",
-    "broccoli": "0.0.10"
+    "broccoli": "0.0.12"
   }
 }
