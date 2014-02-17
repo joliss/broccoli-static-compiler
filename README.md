@@ -2,6 +2,9 @@
 
 Pick files out of a tree, optionally moving them.
 
+(The package name is for historical reasons. We might change it when we hit
+1.0.)
+
 ## Installation
 
 ```bash
