@@ -9,6 +9,10 @@
     "type": "git",
     "url": "https://github.com/joliss/broccoli-static-compiler"
   },
+  "keywords": [
+    "broccoli-plugin",
+    "files"
+  ],
   "dependencies": {
     "mkdirp": "~0.3.5",
     "broccoli": "0.0.12",
