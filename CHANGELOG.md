@@ -1,5 +1,7 @@
 # master
 
+* Loosen dependencies
+
 # 0.0.5
 
 * Use `broccoli-transform` instead of `broccoli.Transformer`
