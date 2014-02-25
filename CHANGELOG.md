@@ -1,5 +1,7 @@
 # master
 
+# 0.1.0
+
 * Loosen dependencies
 
 # 0.0.5
