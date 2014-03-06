@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "mkdirp": "^0.3.5",
-    "broccoli": "0.0.12",
+    "broccoli": "^0.2.3",
     "broccoli-transform": "^0.1.1"
   }
 }
