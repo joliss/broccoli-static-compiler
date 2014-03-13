@@ -1,6 +1,6 @@
 var path = require('path')
 var mkdirp = require('mkdirp')
-var broccoli = require('broccoli')
+var helpers = require('broccoli-kitchen-sink-helpers')
 var Transform = require('broccoli-transform')
 
 module.exports = StaticCompiler
@@ -14,16 +14,16 @@ function StaticCompiler (inputTree, options) {
 
 StaticCompiler.prototype.transform = function (srcDir, destDir) {
   if (this.options.files == null) {
-    broccoli.helpers.linkRecursivelySync(
+    helpers.linkRecursivelySync(
       path.join(srcDir, this.options.srcDir),
       path.join(destDir, this.options.destDir))
   } else {
-    var files = broccoli.helpers.multiGlob(this.options.files, {
+    var files = helpers.multiGlob(this.options.files, {
       cwd: path.join(srcDir, this.options.srcDir)
     })
     for (var i = 0; i < files.length; i++) {
       mkdirp.sync(path.join(destDir, this.options.destDir, path.dirname(files[i])))
-      broccoli.helpers.linkAndOverwrite(
+      helpers.linkAndOverwrite(
         path.join(srcDir, this.options.srcDir, files[i]),
         path.join(destDir, this.options.destDir, files[i]))
     }
