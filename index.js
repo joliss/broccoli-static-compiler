@@ -17,16 +17,19 @@ StaticCompiler.prototype.write = function (readTree, destDir) {
 
   return readTree(this.inputTree).then(function (srcDir) {
     if (self.options.files == null) {
-      helpers.linkRecursivelySync(
+      helpers.copyRecursivelySync(
         path.join(srcDir, self.options.srcDir),
         path.join(destDir, self.options.destDir))
     } else {
+      var baseDir = path.join(srcDir, self.options.srcDir)
       var files = helpers.multiGlob(self.options.files, {
-        cwd: path.join(srcDir, self.options.srcDir)
+        cwd: baseDir,
+        root: baseDir,
+        nomount: false
       })
       for (var i = 0; i < files.length; i++) {
         mkdirp.sync(path.join(destDir, self.options.destDir, path.dirname(files[i])))
-        helpers.linkAndOverwrite(
+        helpers.copyPreserveSync(
           path.join(srcDir, self.options.srcDir, files[i]),
           path.join(destDir, self.options.destDir, files[i]))
       }
