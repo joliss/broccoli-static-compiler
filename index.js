@@ -1,3 +1,4 @@
+var fs = require('fs')
 var path = require('path')
 var mkdirp = require('mkdirp')
 var helpers = require('broccoli-kitchen-sink-helpers')
@@ -16,10 +17,11 @@ StaticCompiler.prototype.write = function (readTree, destDir) {
   var self = this
 
   return readTree(this.inputTree).then(function (srcDir) {
+    var sourcePath = path.join(srcDir, self.options.srcDir)
+    var destPath   = path.join(destDir, self.options.destDir)
+
     if (self.options.files == null) {
-      helpers.copyRecursivelySync(
-        path.join(srcDir, self.options.srcDir),
-        path.join(destDir, self.options.destDir))
+      self._copy(sourcePath, destPath)
     } else {
       var baseDir = path.join(srcDir, self.options.srcDir)
       var files = helpers.multiGlob(self.options.files, {
@@ -28,11 +30,23 @@ StaticCompiler.prototype.write = function (readTree, destDir) {
         nomount: false
       })
       for (var i = 0; i < files.length; i++) {
-        mkdirp.sync(path.join(destDir, self.options.destDir, path.dirname(files[i])))
-        helpers.copyPreserveSync(
-          path.join(srcDir, self.options.srcDir, files[i]),
-          path.join(destDir, self.options.destDir, files[i]))
+        var fileSourcePath = path.join(sourcePath, files[i])
+        var fileDestPath = path.join(destPath, files[i])
+
+        self._copy(fileSourcePath, fileDestPath)
       }
     }
   })
+}
+
+StaticCompiler.prototype._copy = function (sourcePath, destPath) {
+  if (destPath[destPath.length -1] === '/') {
+    destPath = destPath.slice(0, -1)
+  }
+
+  var destDir = path.dirname(destPath)
+  if (!fs.existsSync(destDir)) {
+    mkdirp.sync(destDir)
+  }
+  helpers.symlinkOrCopyPreserveSync(sourcePath, destPath);
 }

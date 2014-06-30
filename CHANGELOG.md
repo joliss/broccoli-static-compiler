@@ -1,5 +1,7 @@
 # master
 
+* Use `symlinkOrCopyPreserveSync` from `broccoli-kitchen-sink-helpers` to use symlinks instead of copying.
+
 # 0.1.4
 
 * Copy instead of hardlinking
