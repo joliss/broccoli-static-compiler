@@ -1,6 +1,6 @@
 # master
 
-* Use `symlinkOrCopyPreserveSync` from `broccoli-kitchen-sink-helpers` to use symlinks instead of copying.
+* Use `node-symlink-or-copy` to use symlinks instead of copying when possible
 
 # 0.1.4
 

@@ -14,8 +14,9 @@
     "files"
   ],
   "dependencies": {
-    "mkdirp": "^0.3.5",
+    "broccoli-kitchen-sink-helpers": "^0.2.3",
     "broccoli-writer": "^0.1.1",
-    "broccoli-kitchen-sink-helpers": "^0.2.3"
+    "mkdirp": "^0.3.5",
+    "symlink-or-copy": "^1.0.0"
   }
 }

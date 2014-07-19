@@ -2,6 +2,7 @@ var fs = require('fs')
 var path = require('path')
 var mkdirp = require('mkdirp')
 var helpers = require('broccoli-kitchen-sink-helpers')
+var symlinkOrCopySync = require('symlink-or-copy').sync
 var Writer = require('broccoli-writer')
 
 module.exports = StaticCompiler
@@ -48,5 +49,5 @@ StaticCompiler.prototype._copy = function (sourcePath, destPath) {
   if (!fs.existsSync(destDir)) {
     mkdirp.sync(destDir)
   }
-  helpers.symlinkOrCopyPreserveSync(sourcePath, destPath);
+  symlinkOrCopySync(sourcePath, destPath)
 }
