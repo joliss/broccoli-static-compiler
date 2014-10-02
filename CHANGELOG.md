@@ -1,5 +1,7 @@
 # master
 
+# 0.2.0
+
 * Use `node-symlink-or-copy` to use symlinks instead of copying when possible (see
   [symlink-change.md](https://github.com/broccolijs/broccoli/blob/master/docs/symlink-change.md))
 
