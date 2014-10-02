@@ -1,6 +1,7 @@
 # master
 
-* Use `node-symlink-or-copy` to use symlinks instead of copying when possible
+* Use `node-symlink-or-copy` to use symlinks instead of copying when possible (see
+  [symlink-change.md](https://github.com/broccolijs/broccoli/blob/master/docs/symlink-change.md))
 
 # 0.1.4
 
