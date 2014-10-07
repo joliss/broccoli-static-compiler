@@ -49,5 +49,12 @@ StaticCompiler.prototype._copy = function (sourcePath, destPath) {
   if (!fs.existsSync(destDir)) {
     mkdirp.sync(destDir)
   }
+
+  // if destDir was / then remove the temp folder
+  // created by broccoli-writer so we can symlink
+  // directly
+  if (this.tmpDestDir === destPath) {
+    fs.rmdirSync(destPath);
+  }
   symlinkOrCopySync(sourcePath, destPath)
 }
