@@ -63,3 +63,33 @@ test('with files glob specified', function(t) {
 
   t.end()
 })
+
+test('with default options', function(t) {
+  t.test('with default srcDir', function(t) {
+    var tree = pickFiles(fixturePath, {
+      destDir: '/'
+    })
+
+    var builder = new Builder(tree)
+    builder.build()
+    .then(function(result) {
+      t.ok(fs.existsSync(path.join(result.directory, 'dir1', 'blah.txt')))
+
+      t.end()
+    })
+  })
+
+  t.test('with default destDir', function(t) {
+    var tree = pickFiles(fixturePath, {
+      srcDir: '/'
+    })
+
+    var builder = new Builder(tree)
+    builder.build()
+    .then(function(result) {
+      t.ok(fs.existsSync(path.join(result.directory, 'dir1', 'blah.txt')))
+
+      t.end()
+    })
+  })
+})
