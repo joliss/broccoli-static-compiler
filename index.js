@@ -11,6 +11,10 @@ StaticCompiler.prototype.constructor = StaticCompiler
 function StaticCompiler (inputTree, options) {
   if (!(this instanceof StaticCompiler)) return new StaticCompiler(inputTree, options)
   this.inputTree = inputTree
+
+  options.srcDir = options.srcDir || '/'
+  options.destDir = options.destDir || '/'
+
   this.options = options || {}
 }
 
@@ -50,7 +54,7 @@ StaticCompiler.prototype._copy = function (sourcePath, destPath) {
     mkdirp.sync(destDir)
   }
 
-  // if destDir was / then remove the temp folder
+  // if destDir was '/' then remove the temp folder
   // created by broccoli-writer so we can symlink
   // directly
   if (this.tmpDestDir === destPath) {
