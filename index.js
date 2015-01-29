@@ -3,21 +3,20 @@ var path = require('path')
 var mkdirp = require('mkdirp')
 var helpers = require('broccoli-kitchen-sink-helpers')
 var symlinkOrCopySync = require('symlink-or-copy').sync
-var Writer = require('broccoli-writer')
 
 module.exports = StaticCompiler
-StaticCompiler.prototype = Object.create(Writer.prototype)
-StaticCompiler.prototype.constructor = StaticCompiler
 function StaticCompiler (inputTree, options) {
   if (!(this instanceof StaticCompiler)) return new StaticCompiler(inputTree, options)
   this.inputTree = inputTree
   this.options = options || {}
 }
 
-StaticCompiler.prototype.write = function (readTree, destDir) {
+StaticCompiler.prototype.rebuild = function () {
   var self = this
 
-  return readTree(this.inputTree).then(function (srcDir) {
+  var srcDir = this.inputTree.directory
+  var destDir = this.directory
+
     var sourcePath = path.join(srcDir, self.options.srcDir)
     var destPath   = path.join(destDir, self.options.destDir)
 
@@ -37,7 +36,6 @@ StaticCompiler.prototype.write = function (readTree, destDir) {
         self._copy(fileSourcePath, fileDestPath)
       }
     }
-  })
 }
 
 StaticCompiler.prototype._copy = function (sourcePath, destPath) {
