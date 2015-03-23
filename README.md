@@ -1,5 +1,8 @@
 # broccoli-static-compiler
 
+**This plugin is deprecated. Use
+[broccoli-funnel](https://github.com/rwjblue/broccoli-funnel) instead.**
+
 Pick files out of a tree, optionally moving them.
 
 (The package name is for historical reasons. We might change it when we hit
