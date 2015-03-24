@@ -38,6 +38,14 @@ StaticCompiler.prototype.write = function (readTree, destDir) {
       }
     }
   })
+  .catch(function(error) {
+    // `helpers.multiglob` throws an error if no files are found.
+    if (self.options.allowEmpty && error.message.match(/did not match any files/)) {
+      // if allowEmpty was specified, swallow that error
+    } else {
+      throw error;
+    }
+  })
 }
 
 StaticCompiler.prototype._copy = function (sourcePath, destPath) {
