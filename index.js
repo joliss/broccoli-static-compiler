@@ -28,7 +28,8 @@ StaticCompiler.prototype.write = function (readTree, destDir) {
       var files = helpers.multiGlob(self.options.files, {
         cwd: baseDir,
         root: baseDir,
-        nomount: false
+        nomount: false,
+        nonegate: !!self.options.nonegate
       })
       for (var i = 0; i < files.length; i++) {
         var fileSourcePath = path.join(sourcePath, files[i])
