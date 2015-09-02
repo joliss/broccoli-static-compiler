@@ -1,5 +1,7 @@
 # master
 
+* Version bump so deprecation notice shows on npm page
+
 # 0.2.1
 
 * Fix regression in using a `destDir` of `/` (without an array if `file` globs). [#14](https://github.com/joliss/broccoli-static-compiler/pull/14)
