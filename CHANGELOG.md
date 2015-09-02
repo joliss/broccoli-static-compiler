@@ -1,5 +1,7 @@
 # master
 
+# 0.2.2
+
 * Version bump so deprecation notice shows on npm page
 
 # 0.2.1
